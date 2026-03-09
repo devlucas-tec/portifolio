@@ -1,7 +1,9 @@
+import { HeroSection } from "./components/header/pages/home/hero-section/intex";
+
 export default async function Home() {
   return (
     <>
-      <h1>Home Page</h1>
+      <HeroSection />
     </>
   )
 }
