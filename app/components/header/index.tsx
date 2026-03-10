@@ -18,8 +18,8 @@ export const Header = () => {
         <div className="container flex items-center justify-between">
             <Link href="/">
                 <Image
-                    width={58}
-                    height={49}
+                    width={78}
+                    height={69}
                     src="/images/lc-logo.svg"
                     alt="Logo LC Dev"
                 />

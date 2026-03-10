@@ -1,9 +1,11 @@
-import { HeroSection } from "./components/header/pages/home/hero-section/intex";
+import { HeroSection } from "./components/pages/home/hero-section"
+import { KnownTechs } from "./components/pages/home/known-techs"
 
 export default async function Home() {
   return (
     <>
       <HeroSection />
+      <KnownTechs/>
     </>
   )
 }
