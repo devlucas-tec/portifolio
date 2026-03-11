@@ -1,4 +1,5 @@
 import type { RichTextContent } from '@graphcms/rich-text-types'
+import { string } from 'zod';
 
 
 export type KnownTech = {
@@ -6,6 +7,8 @@ export type KnownTech = {
     name: string;
     startDate: string;
 }
+
+
 
 export type ProjectSection = {
     title: string;
@@ -30,6 +33,7 @@ export type Project = {
     sections: ProjectSection[]
     description: {
         raw: RichTextContent;
+        text: string
     }
 
     liveProjectUrl?: string
