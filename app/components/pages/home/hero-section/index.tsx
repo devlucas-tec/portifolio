@@ -7,8 +7,8 @@ import { HomePageInfo } from '@/app/types/page-info'
 import { RichText } from '@/app/components/rich-text'
 import { TechBadge } from '@/app/components/tech-badge'
 import { CMSIcon } from '@/app/components/cms-icon'
-
-
+import { motion } from 'framer-motion' // Importado
+import { techBadgeAnimation } from '@/app/lib/animations' // Importado
 
 type HeroSectionProps = {
     homeInfo: HomePageInfo
@@ -26,19 +26,30 @@ export const HeroSection = ({ homeInfo }: HeroSectionProps) => {
         <section className="w-full lg:h-[755px] bg-hero-image bg-cover bg-center bg-no-repeat flex flex-col justify-end pb-10 sm:pb-32 py-32 lg:pb-[110px]">
             <div className="container flex items-start mx-auto flex-col-reverse lg:flex-row justify-between px-4 gap-8">
                 
-                {/* Lado Esquerdo: Textos e Informações */}
-                <div className="w-full lg:max-w-[640px]">
+                {/* Lado Esquerdo Animado: Slide da esquerda para direita */}
+                <motion.div 
+                    className="w-full lg:max-w-[640px]"
+                    initial={{ opacity: 0, x: -100 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -100 }}
+                    transition={{ duration: 0.5 }}
+                >
                     <p className="font-mono text-emerald-400">Olá, meu nome é</p>
-                    <h2 className="text-4xl font-medium mt-2">Lucas Barbosa</h2> {/* Corrigido: </h2> */}
+                    <h2 className="text-4xl font-medium mt-2">Lucas Barbosa</h2>
                     
                     <div className="my-6 text-gray-400 text-sm sm:text-base">
                         <RichText content={homeInfo.introduction.raw} />
                     </div>
 
-                    {/* Techs */}
+                    {/* Techs com animação em cascata */}
                     <div className="flex flex-wrap gap-3 mb-8">
-                        {homeInfo.technologies.map((tech)=> (
-                            <TechBadge name={tech.name} />
+                        {homeInfo.technologies.map((tech, i)=> (
+                            <TechBadge 
+                                key={tech.name} 
+                                name={tech.name} 
+                                {...techBadgeAnimation}
+                                transition={{ duration: 0.2, delay: i * 0.1 }}
+                            />
                         ))}
                     </div>
 
@@ -52,28 +63,34 @@ export const HeroSection = ({ homeInfo }: HeroSectionProps) => {
                         <div className='text-2xl flex items-center h-20 gap-3'>
                             {homeInfo.socials.map((contact, index) => (
                                 <a href={contact.url}
-                                   key={`contact-${index}`}
-                                   target="_blank"
-                                   rel="noreferrer"
-                                   className='hover:text-gray-100 transition-colors'>
-                                    <CMSIcon icon={contact.iconSvg} />
+                                    key={`contact-${index}`}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className='hover:text-gray-100 transition-colors'>
+                                     <CMSIcon icon={contact.iconSvg} />
                                 </a>
                             ))}
                         </div>
                     </div>
-                </div> {/* Fechamento da div de conteúdo movido para cá */}
+                </motion.div>
 
-                {/* Lado Direito: Imagem */}
-                <div className="relative border-2 border-emerald-500 rounded-2xl p-2 w-max mx-auto lg:mx-0">
+                
+                <motion.div 
+                    className="relative border-2 border-emerald-500 rounded-2xl p-2 w-max mx-auto lg:mx-0 origin-center"
+                    initial={{ opacity: 0, y: 200, scale: 0.5 }}
+                    whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 200, scale: 0.5 }}
+                    transition={{ duration: 0.5 }}
+                >
                     <Image
                         width={420}
                         height={404}
                         src={homeInfo.profilePicture.url}
                         alt="Foto de perfil do Lucas"
-                        className="rounded-xl shadow-2xl object-cover"
+                        className="w-full h-auto rounded-xl shadow-2xl object-cover "
                         priority
                     />
-                </div>
+                </motion.div>
             </div>
         </section>
     )
