@@ -1,41 +1,31 @@
-import type { RichTextContent } from '@graphcms/rich-text-types'
-import { string } from 'zod';
-
+import { RichTextContent } from "@graphcms/rich-text-types";
 
 export type KnownTech = {
-    iconSVG: string;
-    name: string;
-    startDate: string;
-}
-
-
+  iconSvg: string;
+  name: string;
+  startDate: string;
+};
 
 export type ProjectSection = {
-    title: string;
-    image: {
-        url: string;
-    }
-}
+  title: string;
+  image: {
+    url: string;
+  };
+};
 
 export type Project = {
-    slug: string;
-    thumbnail: {
-        url: string;
-    }
-
-    title: string;
-    shortDescription: string;
-    technologies: KnownTech[];
-    pageThumbnail: {
-        url: string;
-    }
-
-    sections: ProjectSection[]
-    description: {
-        raw: RichTextContent;
-        text: string
-    }
-
-    liveProjectUrl?: string
-    githubUrl?: string
-}
+  slug: string;
+  thumbnail: {
+    url: string;
+  };
+  title: string;
+  shortDescription: string;
+  technologies: KnownTech[];
+  sections: ProjectSection[];
+  description: {
+    raw: RichTextContent;
+    text: string;
+  };
+  liveProjectUrl?: string;
+  githubUrl?: string;
+};

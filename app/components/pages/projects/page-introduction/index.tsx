@@ -12,8 +12,7 @@ export const PageIntroduction = () => {
             />
             <div className="flex flex-col items-center">
                 <p className="text-gray-400 text-center max-w-[640px] my-6 text-sm sm:text-base">
-                    Aqui você poderá ver alguns dos projetos que desenvolvi, utilizando as mais diversas tecnologias. Esses projetos foram criados com o intuito de aprimorar minhas habilidades e explorar novas possibilidades no desenvolvimento de software. Cada um deles representa um desafio único e uma oportunidade de aprendizado, refletindo minha paixão por criar soluções inovadoras e eficientes.
-                </p>
+Aqui você encontra a trajetória prática da minha carreira. Utilizando um ecossistema variado de tecnologias, desenvolvi estes projetos para testar limites e explorar novas arquiteturas de software. Cada entrega representa uma oportunidade de aprendizado consolidada, demonstrando minha paixão por resolver problemas complexos com código limpo e inovador.                </p>
                 <Link href="/">
                 <HiArrowNarrowLeft size={20} />
                 Voltar para Home

@@ -1,24 +1,55 @@
-import Image from "next/image"
+import { Project } from "@/app/types/projects";
+import Image from "next/image";
+import Link from "next/link";
+import { HiArrowNarrowRight } from "react-icons/hi"; // Se estiver usando react-icons
 
-export const ProjectCard = () => {
-    return (
-        <div className="rounded-lg h-[436px] flex flex-col bg-gray-800 overflow-hidden border-2 border-gray-800 hover:border-emerald-500 opacity-70 hover:opacity-100 transition-all group">
-            <div className="w-full h-48 overflow-hidden">
-                <Image 
-                width={380}
-                height={200}
-                src=""
-                alt="imagem do projeto"
-                unoptimized
-                className="w-full h-full object-cover group-hover:scale-110 duration-500 transition-all"
-                />
-            </div>
+type ProjectCardProps = {
+  project: Project;
+};
 
-            <div className="flex-1 flex flex-col p-8">
-                <strong className="font-medium text-gray-50/9 group-hover:text-emerald-500 transition-all">Nome do projeto</strong>
-                <p className="mt-2 text-gray-400 line-clamp-4">Descrição do projeto</p>
-                <span className="text-gray-300 text-sm font-medium block mt-auto truncate">Java, Spring-boot, React, PostgreSQL</span>
-            </div>
+export const ProjectCard = ({ project }: ProjectCardProps) => {
+  return (
+    <div className="flex flex-col lg:flex-row gap-6 lg:gap-12 items-center lg:items-start py-8 border-b border-gray-800 last:border-b-0">
+      <div className="w-full lg:w-[420px] h-[220px] lg:h-[300px] flex-shrink-0 overflow-hidden rounded-lg">
+        <Image
+          src={project.thumbnail.url}
+          alt={`Thumbnail project ${project.title}`}
+          width={420}
+          height={300}
+          unoptimized
+          className="w-full h-full object-cover hover:scale-105 transition-all duration-500"
+        />
+      </div>
+
+      <div className="flex-1 flex flex-col">
+        <div className="flex items-center gap-2 text-gray-50 group">
+          <Image src="/images/icons/project-title-icon.svg" width={20} height={20} alt="" /> 
+          <strong className="text-xl font-medium">{project.title}</strong>
         </div>
-    )
-}
+
+        <p className="text-gray-400 my-6 leading-relaxed">
+          {project.shortDescription}
+        </p>
+
+        <div className="flex flex-wrap gap-x-2 gap-y-3 mb-8">
+          {project.technologies.map((tech) => (
+            <span 
+              key={tech.name}
+              className="text-emerald-400 bg-emerald-900/30 text-sm py-1 px-3 rounded-lg font-medium"
+            >
+              {tech.name}
+            </span>
+          ))}
+        </div>
+
+        <Link 
+          href={`/projects/${project.slug}`}
+          className="flex items-center gap-2 text-gray-300 hover:text-emerald-400 transition-colors font-medium text-sm"
+        >
+          Ver projeto
+          <HiArrowNarrowRight />
+        </Link>
+      </div>
+    </div>
+  );
+};
