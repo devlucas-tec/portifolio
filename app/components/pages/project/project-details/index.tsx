@@ -1,4 +1,4 @@
-"use client";
+'use client'
 
 import { TechBadge } from "@/app/components/tech-badge";
 import { SectionTitle } from "@/app/components/section-title";
@@ -18,11 +18,11 @@ type ProjectDetailsProps = {
 
 export const ProjectDetails = ({ project }: ProjectDetailsProps) => {
   return (
-      <section className="w-full sm:min-h-[750px] flex flex-col items-center justify-end relative pb-10 sm:pb-24 py-24 px-6 overflow-hidden">
+    <section className="w-full sm:min-h-[750px] flex flex-col items-center justify-end relative pb-10 sm:pb-24 py-24 px-6 overflow-hidden">
       <motion.div
         className="absolute inset-0 z-[-1]"
         style={{
-          background: `url(/images/hero-bg.png) no-repeat center/cover, url(${project.thumbnail.url}) no-repeat center/cover`,
+          background: `linear-gradient(180deg, rgba(15, 7, 32, 0.7) 0%, #0f0720 100%), url(${project.thumbnail.url}) no-repeat center/cover`,
         }}
         initial={{ opacity: 0, scale: 1.3 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -36,7 +36,7 @@ export const ProjectDetails = ({ project }: ProjectDetailsProps) => {
       />
 
       <motion.div
-        className="text-gray-300 text-center max-w-[640px] my-4 sm:my-6 text-sm sm:text-base"
+        className="text-gray-300 text-center max-w-[640px] my-4 sm:my-6 text-sm sm:text-base leading-relaxed"
         {...fadeUpAnimation}
       >
         <RichText content={project.description.raw} />
@@ -58,24 +58,28 @@ export const ProjectDetails = ({ project }: ProjectDetailsProps) => {
         {...fadeUpAnimation}
       >
         {project?.githubUrl && (
-          <a href={project.githubUrl} target="_blank">
-            <Button className="min-w-[180px]">
+          <a href={project.githubUrl} target="_blank" rel="noreferrer">
+            <Button className="min-w-[180px] shadow-button">
               <TbBrandGithub size={20} />
               Repositório
             </Button>
           </a>
         )}
         {project?.liveProjectUrl && (
-          <a href={project.liveProjectUrl} target="_blank">
-            <Button className="min-w-[180px]">
+          <a href={project.liveProjectUrl} target="_blank" rel="noreferrer">
+            <Button className="min-w-[180px] shadow-button">
               <FiGlobe size={20} />
               Projeto Online
             </Button>
           </a>
         )}
       </motion.div>
-      <Link href={"/projects"}>
-        <HiArrowNarrowLeft size={18} />
+
+      <Link 
+        href="/projects" 
+        className="flex items-center gap-2 text-gray-300 hover:text-violet-400 transition-colors group"
+      >
+        <HiArrowNarrowLeft size={18} className="group-hover:-translate-x-1 transition-transform" />
         Voltar para Projetos
       </Link>
     </section>

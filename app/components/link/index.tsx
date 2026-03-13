@@ -1,6 +1,5 @@
 import { cn } from "@/app/lib/utils";
 import NextLink from "next/link";
-import { type } from "os";
 import { Children, ComponentProps } from "react";
 
 type LinkProps = ComponentProps<typeof NextLink>;
