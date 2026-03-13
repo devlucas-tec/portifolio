@@ -77,7 +77,7 @@ export const HeroSection = ({ homeInfo }: HeroSectionProps) => {
 
         {/* Lado Direito: Foto de Perfil */}
         <motion.div 
-    className="relative border-2 border-violet-500/30 rounded-2xl p-2 w-max mx-auto lg:mx-0 origin-center shadow-[0_0_25px_rgba(6,182,212,0.2)]"
+    className="relative border-2 border-violet-500/30 rounded-2xl p-2 w-fit mx-auto lg:mx-0 origin-center shadow-[0_0_25px_rgba(6,182,212,0.2)]"
     initial={{ opacity: 0, y: 50, scale: 0.5 }}
     whileInView={{ opacity: 1, y: 0, scale: 1 }}
     viewport={{ once: true, amount: 0.3 }} 
@@ -88,7 +88,7 @@ export const HeroSection = ({ homeInfo }: HeroSectionProps) => {
         height={404}
         src={homeInfo.profilePicture.url}
         alt="Foto de perfil do Lucas"
-        className="w-full h-auto rounded-xl shadow-2xl object-cover"
+        className="w-full max-w-[320px] sm:max-w-[420px] h-auto rounded-xl shadow-2xl object-cover block mx-auto"
         priority
     />
 </motion.div>
