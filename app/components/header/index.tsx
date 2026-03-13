@@ -28,8 +28,8 @@ export const Header = () => {
       <div className="container flex items-center justify-between">
         <Link href="/" className="hover:opacity-80 transition-opacity mt-4">
           <Image
-            width={60} 
-            height={60}
+            width={48} 
+            height={38}
             src="/images/lb-logo.svg"
             alt="Logo LB Dev"
             className="object-contain"

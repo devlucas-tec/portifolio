@@ -24,13 +24,13 @@ export const PageIntroduction = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.2 }}
       >
-        <p className="text-gray-400 text-center max-w-[640px] my-6 text-sm sm:text-base leading-relaxed">
+        <p className="text-gray-200 text-center max-w-[640px] my-6 text-sm sm:text-base leading-relaxed">
           Aqui você encontra a trajetória prática da minha carreira. Utilizando um ecossistema variado de tecnologias, desenvolvi estes projetos para testar limites e explorar novas arquiteturas de software. Cada entrega representa uma oportunidade de aprendizado consolidada.
         </p>
 
         <Link 
           href="/" 
-          className="flex items-center gap-2 text-gray-300 hover:text-violet-400 transition-colors group"
+          className="flex items-center gap-2 text-gray-200 hover:text-violet-400 transition-colors group"
         >
           <HiArrowNarrowLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
           Voltar para Home
