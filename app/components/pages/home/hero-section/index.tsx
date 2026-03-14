@@ -53,8 +53,8 @@ export const HeroSection = ({ homeInfo }: HeroSectionProps) => {
             ))}
           </div>
 
-          <div className="mt-6 lg:mt-10 flex flex-col sm:flex-row sm:items-center gap-6">
-            <Button className="w-max shadow-button" onClick={handleContact}>
+          <div className="mt-6 lg:mt-10 flex flex-wrap sm:items-center gap-6">
+            <Button className="w-max shadow-button shrink-0" onClick={handleContact}>
               Entre em Contato
               <HiArrowNarrowRight size={18} />
             </Button>
